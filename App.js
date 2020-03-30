@@ -141,7 +141,7 @@ const App = () => {
                 <Scene key="register" component={Register} />
                 <Scene initial={!isLogin} key="login" component={Login} />
             </Lightbox>
-        </Router>
+        </Router>  
     );
 };
 
