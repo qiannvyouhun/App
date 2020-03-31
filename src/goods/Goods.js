@@ -57,29 +57,29 @@ export default class Goods extends Component {
                             placeholderTextColor='#999999'
                             style={{
                                 width: 500 * s,
-                                height: 50 * s,
+                                height: "100%",
                                 paddingLeft: 10,
                                 fontSize: 15
                             }}
                         />
-                        <Icon color='#a0a0a0' name='search' style={{ fontSize: 15 }} />
+                        <Icon color='#a0a0a0' name='search' style={{ fontSize: 25 }} />
                     </View>
                 </View>
                 <View style={styles.nav}>
                     <TouchableOpacity>
-                        <Text style={{ fontSize: 19, color: 'red' }}>综合</Text>
+                        <Text style={{ fontSize: 17, color: 'red' }}>综合</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <Text style={{ fontSize: 19 }}>销量</Text>
+                        <Text style={{ fontSize: 17 }}>销量</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <Text style={{ fontSize: 19 }}>新品</Text>
+                        <Text style={{ fontSize: 17 }}>新品</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <Text style={{ fontSize: 19 }}>价格</Text>
+                        <Text style={{ fontSize: 17 }}>价格</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <Text style={{ fontSize: 19 }}>信用</Text>
+                        <Text style={{ fontSize: 17 }}>信用</Text>
                     </TouchableOpacity>
                 </View>
                 <FlatList
@@ -110,14 +110,14 @@ export default class Goods extends Component {
 }
 const styles = StyleSheet.create({
     header: {
-        height: 70 * s,
+        height: 60,
         borderBottomColor: '#E8E8E8',
         borderBottomWidth: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
     search: {
-        height: 50 * s,
+        height: 40,
         width: 544 * s,
         backgroundColor: '#EEEEEE',
         flexDirection: 'row',

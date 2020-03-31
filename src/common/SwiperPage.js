@@ -17,13 +17,13 @@ export default class SwiperPage extends Component {
             source={require('../../assets/slide1.png')}
           />
         </View>
-        <View style={styles.slide1}>
+        <View style={styles.slide}>
           <Image
             style={styles.img}
             source={require('../../assets/slide2.png')}
           />
         </View>
-        <View style={styles.slide1} >
+        <View style={styles.slide} >
           <Image
             style={styles.img}
             source={require('../../assets/slide3.png')}

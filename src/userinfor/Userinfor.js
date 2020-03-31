@@ -5,7 +5,6 @@ import {
     Dimensions,
     StyleSheet,
     Image,
-    FlatList,
     ScrollView,
     TouchableOpacity,
     AsyncStorage
@@ -16,27 +15,6 @@ import { Actions } from 'react-native-router-flux';
 
 const { width } = Dimensions.get('window');
 const s = width / 640;
-
-const options = {
-    title: '选择图片',
-    cancelButtonTitle: '取消',
-    takePhotoButtonTitle: '拍照',
-    chooseFromLibraryButtonTitle: '选择照片',
-    cameraType: 'back',
-    mediaType: 'photo',
-    videoQuality: 'high',
-    durationLimit: 10,
-    maxWidth: 300,
-    maxHeight: 300,
-    quality: 0.8,
-    angle: 0,
-    rotation: 90,
-    allowsEditing: false,
-    noData: false,
-    storageOptions: {
-        skipBackup: true
-    }
-};
 
 const middle = [
     {
@@ -94,6 +72,26 @@ const bottom = [
         icon: 'edit'
     },
 ]
+const options = {
+    title: '选择图片',
+    cancelButtonTitle: '取消',
+    takePhotoButtonTitle: '拍照',
+    chooseFromLibraryButtonTitle: '选择照片',
+    cameraType: 'back',
+    mediaType: 'photo',
+    videoQuality: 'high',
+    durationLimit: 10,
+    maxWidth: 300,
+    maxHeight: 300,
+    quality: 0.8,
+    angle: 0,
+    rotation: 90,
+    allowsEditing: false,
+    noData: false,
+    storageOptions: {
+        skipBackup: true
+    }
+};
 
 export default class Userinfor extends Component {
     constructor(props) {
@@ -106,14 +104,17 @@ export default class Userinfor extends Component {
     componentDidMount() {
         AsyncStorage.getItem('uri')
             .then((res) => {
-                let imageUri = { uri: res }
-                this.setState({
-                    avatarSource: imageUri
-                })
+                if (res) {
+                    let imageUri = { uri: res }
+                    this.setState({
+                        avatarSource: imageUri
+                    })
+                }
             })
     }
     choosePic() {
         console.log(this.state.avatarSource)
+
         ImagePicker.showImagePicker(options, (response) => {
             if (response.didCancel) {
                 console.log('User cancelled photo picker');
@@ -144,7 +145,7 @@ export default class Userinfor extends Component {
                 <View style={{ flex: 1, backgroundColor: '#eeeeee' }}>
                     <View style={styles.header}>
                         <TouchableOpacity
-                            onPress={this.choosePic.bind(this)}
+                            onPress={() => this.choosePic()}
                             style={styles.takephoto}
                         >
                             <Image style={styles.image} source={this.state.avatarSource}></Image>
@@ -152,8 +153,8 @@ export default class Userinfor extends Component {
                         <Text style={{ fontSize: 27 * s, color: '#fff' }}>BINNU DHILLON</Text>
                     </View>
                     <View style={styles.tit}>
-                        <Icon style={{ fontSize: 30, marginRight: 10, color: '#c2c2c2' }} name='user' />
-                        <Text style={{ fontSize: 20, color: '#4f4e4e' }}>我的个人中心</Text>
+                        <Icon style={{ fontSize: 25, marginRight: 10, color: '#c2c2c2' }} name='user' />
+                        <Text style={{ fontSize: 22 * s, color: '#4f4e4e' }}>我的个人中心</Text>
                     </View>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: "#fff" }}>
                         {
@@ -161,18 +162,18 @@ export default class Userinfor extends Component {
                                 return <View style={styles.middle}>
                                     <Icon
                                         name={item.icon}
-                                        style={{ fontSize: 30, marginBottom: 20 * s, color: '#c2c2c2' }}
+                                        style={{ fontSize: 25, marginBottom: 20 * s, color: '#c2c2c2' }}
                                     />
                                     <Text
-                                        style={{ fontSize: 20, color: '#4f4e4e' }}
+                                        style={{ fontSize: 22 * s, color: '#4f4e4e' }}
                                     >{item.title}</Text>
                                 </View>
                             })
                         }
                     </View>
                     <View style={[styles.tit, { marginTop: 8 }]}>
-                        <Icon style={{ fontSize: 30, marginRight: 10, color: '#c2c2c2' }} name='tag' />
-                        <Text style={{ fontSize: 20, color: '#4f4e4e' }}>E族活动</Text>
+                        <Icon style={{ fontSize: 25, marginRight: 10, color: '#c2c2c2' }} name='tag' />
+                        <Text style={{ fontSize: 22 * s, color: '#4f4e4e' }}>E族活动</Text>
                     </View>
                     <View style={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: "#fff" }}>
                         {
@@ -181,11 +182,11 @@ export default class Userinfor extends Component {
                                     return <View style={styles.middle}>
                                         <Icon
                                             name='edit'
-                                            style={{ fontSize: 30, marginBottom: 20 * s, color: '#c2c2c2' }}
+                                            style={{ fontSize: 25, marginBottom: 20 * s, color: '#c2c2c2' }}
                                             onPress={() => Actions.myPublish()}
                                         />
                                         <Text
-                                            style={{ fontSize: 20, color: '#4f4e4e' }}
+                                            style={{ fontSize: 22 * s, color: '#4f4e4e' }}
                                             onPress={() => Actions.myPublish()}
                                         >我的发布</Text>
                                     </View>
@@ -194,10 +195,10 @@ export default class Userinfor extends Component {
                                     return <View style={styles.middle}>
                                         <Icon
                                             name={item.icon}
-                                            style={{ fontSize: 30, marginBottom: 20 * s, color: '#c2c2c2' }}
+                                            style={{ fontSize: 25, marginBottom: 20 * s, color: '#c2c2c2' }}
                                         />
                                         <Text
-                                            style={{ fontSize: 20, color: '#4f4e4e' }}
+                                            style={{ fontSize: 22 * s, color: '#4f4e4e' }}
                                         >{item.title}</Text>
                                     </View>
                                 }
@@ -205,7 +206,7 @@ export default class Userinfor extends Component {
                         }
                     </View>
                     <TouchableOpacity style={styles.out} onPress={this.outLogin}>
-                        <Text style={{ color: '#767676', fontSize: 18 }}>
+                        <Text style={{ color: '#767676', fontSize: 22 * s }}>
                             BINNU DHILLON |退出
                     </Text>
                     </TouchableOpacity>

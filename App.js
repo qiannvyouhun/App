@@ -8,7 +8,6 @@ import { Icon } from '@ant-design/react-native';
 import SplashScreen from 'react-native-splash-screen';
 import Goods from './src/goods/Goods';
 import Home from './src/home/Home';
-import Cart from './src/cart/Cart';
 import User from './src/userinfor/Userinfor';
 import MyPublish from './src/userinfor/MyPublish';
 import Login from './src/common/Login'
@@ -18,13 +17,12 @@ import Register from './src/common/Register'
 console.disableYellowBox = true;//取消黄色警告
 
 const App = () => {
-    let [isLogin, setLogin] = useState(false);
-    let [isInstall, setInstall] = useState(true);
+    let [isLogin, setLogin] = useState(false);//是否登录过
+    let [isInstall, setInstall] = useState(true);//是否第一次安装
     let now = 0;
     let init = () => {
         AsyncStorage.getItem('isInstall')
             .then(res => {
-                console.log('isinstall', res)
                 if (res) {
                     setInstall(false);
                 }
@@ -32,7 +30,6 @@ const App = () => {
         AsyncStorage.getItem('user')
             .then(res => {
                 let user = JSON.parse(res)
-                console.log(user)
                 if (!user) {
                     SplashScreen.hide();
                 }
@@ -54,6 +51,7 @@ const App = () => {
             <SwiperPage afterInstall={afterInstall} />
         </View>
     }
+    //如果不是第一次安装，直接进入首页
     return (
         <Router
             backAndroidHandler={() => {
@@ -65,7 +63,7 @@ const App = () => {
                     if (new Date().getTime() - now < 2000) {
                         BackHandler.exitApp();
                     } else {
-                        ToastAndroid.show('确定要退出吗', 100);
+                        ToastAndroid.show('再按一次返回键退出程序', 100);
                         now = new Date().getTime();
                         return true;
                     }
@@ -102,17 +100,6 @@ const App = () => {
                             <Scene key='goods' hideNavBar={true} component={Goods} />
                         </Scene>
 
-                        {/* 购物车 */}
-                        <Scene
-                            key='car'
-                            title='购物车'
-                            hideDrawerButton
-                            icon={({ focused }) =>
-                                <Icon color={focused ? 'red' : '#959595'} name='shopping-cart' />}>
-                            <Scene key='car' hideNavBar={true} component={Cart} />
-                        </Scene>
-                        {/* 我的发布 */}
-
                         {/* 我的 */}
                         <Scene
                             key='my'
@@ -121,6 +108,7 @@ const App = () => {
                             icon={({ focused }) =>
                                 <Icon color={focused ? 'red' : '#959595'} name='user' />}>
                             <Scene key='my' hideNavBar={true} component={User} />
+
                             {/* 我的发布 */}
                             <Scene
                                 navigationBarStyle={{ backgroundColor: 'red' }}
@@ -130,6 +118,8 @@ const App = () => {
                                 key="myPublish"
                                 title='我的发布'
                                 titleStyle={{ flex: 1, textAlign: 'center', color: '#fff' }}//标题的文本居中
+                                hideNavBar={false}
+                                navBarButtonColor='#fff'
                                 hideTabBar
                                 component={MyPublish}
                                 icon={({ focused }) =>
@@ -141,8 +131,10 @@ const App = () => {
                 <Scene key="register" component={Register} />
                 <Scene initial={!isLogin} key="login" component={Login} />
             </Lightbox>
-        </Router>  
+        </Router>
     );
 };
+
+
 
 export default App;

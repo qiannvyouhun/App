@@ -6,8 +6,12 @@ import {
     StatusBar,
     StyleSheet,
     TouchableOpacity,
-    ToastAndroid
+    ToastAndroid,
+    Dimensions
 } from 'react-native';
+
+const { width } = Dimensions.get('window');
+const s = width / 640;
 
 export default class MyPublish extends Component {
     constructor() {
@@ -54,25 +58,25 @@ export default class MyPublish extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
+            <View style={{ flex: 1, backgroundColor: "#fff" }}>
                 <StatusBar backgroundColor='transparent' translucent={true} />
                 <ScrollView>
                     {
                         this.state.tits.map((item) => (
                             <View style={styles.box}>
-                                <View style={{ height: 50, width: 310 }}>
+                                <View style={{ height: 50, width: '63%' }}>
                                     <Text style={styles.title}>
                                         {item.title ? (item.title.length > 16 ? item.title.substr(0, 16) + "..." : item.title) : ""}
                                     </Text>
                                 </View>
-                                <View style={{ height: 50, width: 110 }}>
-                                    <Text style={{ fontSize: 16, lineHeight: 50 }}>
+                                <View style={{ height: 50, width: "20%" ,marginLeft:"3%"}}>
+                                    <Text style={{ fontSize: 22 * s, lineHeight: 50 }}>
                                         {item.create_at.substr(0, 10)}
                                     </Text>
                                 </View>
                                 <View>
                                     <Text style={{
-                                        fontSize: 16,
+                                        fontSize: 22 * s,
                                         lineHeight: 50
                                     }}>
                                         {(parseInt(Math.random() * 2) === 0) ? <Text>已回复</Text> : <Text style={{ color: "red" }}>待回复</Text>}
@@ -105,14 +109,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     title: {
-        fontSize: 16,
+        fontSize: 22 * s,
         lineHeight: 50,
         marginLeft: 20
     },
     bottom: {
-        height: 130,
         backgroundColor: "#fff",
-        marginBottom: 55,
+        marginBottom: 50,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between"

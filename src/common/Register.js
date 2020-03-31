@@ -73,6 +73,7 @@ export default class Register extends Component {
             <Icon name="lock" color="#F2BA96" />
             <TextInput placeholder="请输入密码"
               onChangeText={this.pwdhandle}
+              secureTextEntry={true}
             />
           </View>
           <View
@@ -84,7 +85,7 @@ export default class Register extends Component {
               secureTextEntry={true}
             />
           </View>
-          <View style={{flexDirection:'row',width:'70%',justifyContent:'space-between',alignItems:'center'}}>
+          <View style={{ flexDirection: 'row', width: '70%', justifyContent: 'space-between', alignItems: 'center' }}>
             <TouchableOpacity
               style={styles.register}
               onPress={this.register}>
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   title: {
     position: 'absolute',
     width: 350,
-    height: 350,
+    height: 400,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
@@ -168,8 +169,8 @@ const styles = StyleSheet.create({
     width: '40%',
     height: 40,
     marginTop: 20,
-    borderColor:'#F2BA96',
-    borderWidth:2,
+    borderColor: '#F2BA96',
+    borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,

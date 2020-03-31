@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TextInput, AsyncStorage, StyleSheet, TouchableOpacity, ToastAndroid } from 'react-native';
 import { Icon } from '@ant-design/react-native';
-import { Actions, Router } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import { myFetch } from '../utils'
 export default class Login extends Component {
   constructor() {
@@ -45,61 +45,41 @@ export default class Login extends Component {
   }
   render() {
     return (
-      // <Router
-        // backAndroidHandler={() => {
-        //   if (Actions.currentScene != 'home') {
-        //     Actions.pop();
-        //     return true;
-        //   } else {
-        //     if (new Date().getTime() - now < 2000) {
-        //       BackHandler.exitApp();
-        //     } else {
-        //       ToastAndroid.show('确定要退出吗', 100);
-        //       now = new Date().getTime();
-        //       return true;
-        //     }
-        //   }
-
-        // }}
-        // >
-        <View style={styles.box} >
-          <Image
-            style={styles.img}
-            source={require('../../assets/login.png')}
-          />
+      <View style={styles.box} >
+        <Image
+          style={styles.img}
+          source={require('../../assets/login.png')}
+        />
+        <View
+          style={styles.title}>
           <View
-            style={styles.title}>
-            <View
-              style={styles.user}>
-              <Icon name="user" color="#F2BA96" />
-              <TextInput placeholder="用户名"
-                onChangeText={this.userhandle}
-              />
-            </View>
-            <View
-              style={styles.pwd}>
-              <Icon name="lock" color="#F2BA96" />
-              <TextInput
-                onChangeText={this.pwdhandle}
-                placeholder="密码"
-                secureTextEntry={true}
-              />
-            </View>
-            <TouchableOpacity
-              style={styles.login}
-              onPress={this.login}>
-              <Text>登录</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.register}
-              onPress={() => Actions.replace('register')}>
-              <Text>注册</Text>
-            </TouchableOpacity>
+            style={styles.user}>
+            <Icon name="user" color="#F2BA96" />
+            <TextInput placeholder="用户名"
+              onChangeText={this.userhandle}
+            />
           </View>
+          <View
+            style={styles.pwd}>
+            <Icon name="lock" color="#F2BA96" />
+            <TextInput
+              onChangeText={this.pwdhandle}
+              placeholder="密码"
+              secureTextEntry={true}
+            />
+          </View>
+          <TouchableOpacity
+            style={styles.login}
+            onPress={this.login}>
+            <Text>登录</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.register}
+            onPress={() => Actions.replace('register')}>
+            <Text>注册</Text>
+          </TouchableOpacity>
         </View>
-
-      // </Router>
-
+      </View>
     );
   }
 }
@@ -117,7 +97,7 @@ const styles = StyleSheet.create({
   title: {
     position: 'absolute',
     width: 350,
-    height: 350,
+    height: 400,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,

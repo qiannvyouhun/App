@@ -21,14 +21,14 @@ export default class Home extends Component {
             <View style={{ flex: 1, backgroundColor: '#f5f5f5' }}>
                 <View style={styles.hearder}>
                     <View style={styles.search}>
-                        <Icon style={{ fontSize: 30, color: '#fff', marginLeft: 15 }} name='search' />
+                        <Icon style={{ fontSize: 25, color: '#fff', marginLeft: 15 }} name='search' />
                         <TextInput
                             placeholder='请输入您要搜索的关键字'
                             placeholderTextColor='#fff'
-                            style={{ fontSize: 17 }}
+                            style={{ fontSize: 17, height: '100%' }}
                         />
                     </View>
-                    <Icon style={{ color: "#fff", fontSize: 30, marginLeft: 15 }} name='shopping-cart' />
+                    <Icon style={{ color: "#fff", fontSize: 25, marginLeft: 15 }} name='shopping-cart' />
                 </View>
                 <View style={styles.container}>
                     <Swiper
@@ -47,43 +47,43 @@ export default class Home extends Component {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <TouchableOpacity style={styles.touch}>
                         <Image
-                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 40 }}
+                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 20 }}
                             source={require('../../assets/home1.png')}
                         />
                         <Text style={{ fontSize: 22 * s, color: '#333333' }}>
                             居家维修保养
                         </Text>
-                        <Icon style={{ marginLeft: 275 * s }} name='right' />
+                        <Icon style={{ marginLeft: "39%" }} name='right' />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touch}>
                         <Image
-                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 40 }}
+                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 20 }}
                             source={require('../../assets/home2.png')}
                         />
                         <Text style={{ fontSize: 22 * s, color: '#333333' }}>
                             住宿优惠
                         </Text>
-                        <Icon style={{ marginLeft: 320 * s }} name='right' />
+                        <Icon style={{ marginLeft: "46%" }} name='right' />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touch}>
                         <Image
-                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 40 }}
+                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 20 }}
                             source={require('../../assets/home3.png')}
                         />
                         <Text style={{ fontSize: 22 * s, color: '#333333' }}>
                             出行接送
                         </Text>
-                        <Icon style={{ marginLeft: 320 * s }} name='right' />
+                        <Icon style={{ marginLeft: "46%" }} name='right' />
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touch}>
                         <Image
-                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 40 }}
+                            style={{ height: 105 * s, width: 105 * s, marginLeft: 20, marginRight: 20 }}
                             source={require('../../assets/home4.png')}
                         />
                         <Text style={{ fontSize: 22 * s, color: '#333333' }}>
                             E族活动
                         </Text>
-                        <Icon style={{ marginLeft: 320 * s }} name='right' />
+                        <Icon style={{ marginLeft: "47%" }} name='right' />
                     </TouchableOpacity>
                     <View style={{ alignItems: 'center', marginTop: 35 }}>
                         <TouchableOpacity style={styles.release}>
@@ -105,14 +105,14 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
     hearder: {
-        height: 70 * s,
+        height: 60,
         backgroundColor: '#f23030',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
     },
     search: {
-        height: 52 * s,
+        height: 40,
         width: 530 * s,
         backgroundColor: '#fff',
         flexDirection: 'row',
